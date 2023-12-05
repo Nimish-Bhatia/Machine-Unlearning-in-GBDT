@@ -141,7 +141,7 @@ import matplotlib as mpl
 #     lines = file.readlines()
 # data = [re.split(r'\s+', line.strip()) for line in lines]
 # mart = pd.DataFrame(data)
-with open('test_coffee.csv_robustlogit_J20_v0.1.testlog', 'r') as file:
+with open('coffee_bean.test.csv_robustlogit_J20_v0.1.testlog', 'r') as file:
     lines = file.readlines()
 data = [re.split(r'\s+', line.strip()) for line in lines]
 robustlogit = pd.DataFrame(data)
