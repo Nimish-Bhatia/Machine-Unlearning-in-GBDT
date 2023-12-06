@@ -5,6 +5,10 @@ build
 intel_image_classification
 vehicles_image_classification
 dog-breed
+matlab
+python 
+R
+
 
 # make files for clean, predict, train, tune and unlearn
 abcboost_clean
