@@ -24,11 +24,11 @@ def load_images_from_folder(folder):
     return images, labels
 
 # Assuming you have a 'training' folder with subfolders for each class
-training_folder = './data/test'
+training_folder = './intel_image_classification/seg_train'
 images, lbls = load_images_from_folder(training_folder)
 
 # Feature extraction using PCA to limit the number of features
-num_features = 100  # Specify the desired number of features
+num_features = 60  # Specify the desired number of features
 pca = PCA(n_components=num_features)
 
 # Assuming 'images' is a list of images
@@ -54,4 +54,4 @@ df['label'] = lbls  # Add labels column
 df = df[['label'] + columns]
 
 # Save DataFrame to CSV
-df.to_csv('./data/coffee_bean.test.csv', index=False)
+df.to_csv('./data/intel_image.train.csv', index=False)

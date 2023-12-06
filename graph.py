@@ -32,30 +32,30 @@ import matplotlib as mpl
 
 
 
-# # with open('comp_cpu.test.csv_mart_J20_v0.1.testlog', 'r') as file:
-# #     lines = file.readlines()
-# # data = [re.split(r'\s+', line.strip()) for line in lines]
-# # mart = pd.DataFrame(data)
-# # with open('comp_cpu.test.csv_robustlogit_J20_v0.1.testlog', 'r') as file:
-# #     lines = file.readlines()
-# # data = [re.split(r'\s+', line.strip()) for line in lines]
-# # robustlogit = pd.DataFrame(data)
-# # # Errors for both method
-# # errors_mart_comp_cpu=mart[2].to_numpy().astype(int)
-# # errors_robustlogit_comp_cpu=robustlogit[2].to_numpy().astype(int)
-# # x_values = np.arange(1, len(errors_mart_comp_cpu) + 1)
-# # # Plot the graph
-# # plt.plot(x_values, errors_mart_comp_cpu,  linestyle='-', color='b', label='MART')
-# # plt.plot(x_values, errors_robustlogit_comp_cpu, linestyle='-', color='r', label='Robust LogitBoost')
-# # # Add labels and title
-# # plt.xlabel('Iterations')
-# # plt.ylabel('Errors')
-# # plt.title('Comp_CPU Dataset')
-# # # Add legend
-# # plt.legend()
-# # # Show the plot
-# # plt.savefig('graph_compcpu.png') 
-# # plt.close()
+# with open('comp_cpu.test.csv_mart_J20_v0.1.testlog', 'r') as file:
+#     lines = file.readlines()
+# data = [re.split(r'\s+', line.strip()) for line in lines]
+# mart = pd.DataFrame(data)
+# with open('comp_cpu.test.csv_robustlogit_J20_v0.1.testlog', 'r') as file:
+#     lines = file.readlines()
+# data = [re.split(r'\s+', line.strip()) for line in lines]
+# robustlogit = pd.DataFrame(data)
+# # Errors for both method
+# errors_mart_comp_cpu=mart[2].to_numpy().astype(int)
+# errors_robustlogit_comp_cpu=robustlogit[2].to_numpy().astype(int)
+# x_values = np.arange(1, len(errors_mart_comp_cpu) + 1)
+# # Plot the graph
+# plt.plot(x_values, errors_mart_comp_cpu,  linestyle='-', color='b', label='MART')
+# plt.plot(x_values, errors_robustlogit_comp_cpu, linestyle='-', color='r', label='Robust LogitBoost')
+# # Add labels and title
+# plt.xlabel('Iterations')
+# plt.ylabel('Errors')
+# plt.title('Comp_CPU Dataset')
+# # Add legend
+# plt.legend()
+# # Show the plot
+# plt.savefig('graph_compcpu.png') 
+# plt.close()
 
 # with open('covtype.test.csv_mart_J20_v0.1.testlog', 'r') as file:
 #     lines = file.readlines()
@@ -137,30 +137,36 @@ import matplotlib as mpl
 # plt.close()
 
 
-# with open('test_coffee.csv_mart_J20_v0.1.testlog', 'r') as file:
+# with open('coffee_bean.test.csv_mart_J20_v0.1.testlog', 'r') as file:
 #     lines = file.readlines()
 # data = [re.split(r'\s+', line.strip()) for line in lines]
 # mart = pd.DataFrame(data)
-with open('coffee_bean.test.csv_robustlogit_J20_v0.1.testlog', 'r') as file:
+with open('intel_image.test.csv_mart_J20_v0.1.testlog', 'r') as file:
     lines = file.readlines()
 data = [re.split(r'\s+', line.strip()) for line in lines]
 robustlogit = pd.DataFrame(data)
+with open('intel_image.test.csv_mart_J20_v0.1.unlearnlog', 'r') as file:
+    lines = file.readlines()
+data = [re.split(r'\s+', line.strip()) for line in lines]
+robustlogit_unlearn = pd.DataFrame(data)
 # Errors for both method
 
 # errors_mart_coffee=mart[2].to_numpy().astype(int)
 errors_robustlogit_coffee=robustlogit[2].to_numpy().astype(int)
+errors_robustlogit_coffee_ul=robustlogit[2].to_numpy().astype(int)
 x_values = np.arange(1, len(errors_robustlogit_coffee) + 1)
 # Plot the graph
 # plt.plot(x_values, errors_mart_coffee,  linestyle='-', color='b', label='MART')
-plt.plot(x_values, errors_robustlogit_coffee, linestyle='-', color='r', label='Robust LogitBoost')
+plt.plot(x_values, errors_robustlogit_coffee, linestyle='dashed', color='r', label='MART Original')
+plt.plot(x_values, errors_robustlogit_coffee_ul, linestyle='dotted', color='b', label='MART Unlearned')
 # Add labels and title
 plt.xlabel('Iterations')
 plt.ylabel('Errors')
-plt.title('Coffee Dataset')
+plt.title('Intel Image Dataset')
 # Add legend
 plt.legend()
 # Show the plot
-plt.savefig('graph_coffee.png') 
+plt.savefig('graph_intelw.png') 
 plt.close()
 
 
@@ -172,7 +178,8 @@ plt.close()
 # # plt.plot(x_values, errors_mart_comp_cpu, linestyle='-', color='r', label='Comp_CPU')
 # plt.plot(x_values, errors_mart_covtype,  linestyle='-', color='g', label='Covtype')
 # plt.plot(x_values, errors_mart_optdigits, linestyle='-', color='y', label='Optdigits')
-# plt.plot(x_values, errors_mart_ijcnn,  linestyle='-', color='k', label='IJCNN')
+# plt.plot(x_values, errors_mart_ijcnn,  linestyle='-', color='m', label='IJCNN')
+# plt.plot(x_values, errors_mart_coffee,  linestyle='-', color='r', label='Coffee Bean')
 # # Add labels and title
 # plt.xlabel('Iterations')
 # plt.ylabel('Errors')
@@ -188,7 +195,8 @@ plt.close()
 # # plt.plot(x_values, errors_robustlogit_comp_cpu, linestyle='-', color='r', label='Comp_CPU')
 # plt.plot(x_values, errors_robustlogit_covtype,  linestyle='-', color='g', label='Covtype')
 # plt.plot(x_values, errors_robustlogit_optdigits, linestyle='-', color='y', label='Optdigits')
-# plt.plot(x_values, errors_robustlogit_ijcnn,  linestyle='-', color='k', label='IJCNN')
+# plt.plot(x_values, errors_robustlogit_ijcnn,  linestyle='-', color='m', label='IJCNN')
+# plt.plot(x_values, errors_robustlogit_coffee, linestyle='-', color='r', label='Coffee Bean')
 # # Add labels and title
 # plt.xlabel('Iterations')
 # plt.ylabel('Errors')

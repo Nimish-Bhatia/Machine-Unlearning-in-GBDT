@@ -1,6 +1,11 @@
 # build files
 build
 
+# redundant folders
+intel_image_classification
+vehicles_image_classification
+dog-breed
+
 # make files for clean, predict, train, tune and unlearn
 abcboost_clean
 abcboost_predict
