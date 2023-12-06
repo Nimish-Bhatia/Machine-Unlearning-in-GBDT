@@ -149,19 +149,20 @@ with open('intel_image.test.csv_robustlogit_J20_v0.1.unlearnlog', 'r') as file:
     lines = file.readlines()
 data = [re.split(r'\s+', line.strip()) for line in lines]
 robustlogit_unlearn = pd.DataFrame(data)
+test_data = pd.read_csv('./data/intel_image.test.csv')
 # Errors for both method
 
 # errors_mart_coffee=mart[2].to_numpy().astype(int)
-errors_robustlogit_coffee=robustlogit[2].to_numpy().astype(int)
-errors_robustlogit_coffee_ul=robustlogit[2].to_numpy().astype(int)
+errors_robustlogit_coffee=robustlogit[2].to_numpy().astype(int) / len(test_data.index) * 100
+errors_robustlogit_coffee_ul=robustlogit_unlearn[2].to_numpy().astype(int) / len(test_data.index) * 100
 x_values = np.arange(1, len(errors_robustlogit_coffee) + 1)
 # Plot the graph
 # plt.plot(x_values, errors_mart_coffee,  linestyle='-', color='b', label='MART')
-plt.plot(x_values, errors_robustlogit_coffee, linestyle='dashed', color='r', label='MART Original')
-plt.plot(x_values, errors_robustlogit_coffee_ul, linestyle='dotted', color='b', label='MART Unlearned')
+plt.plot(x_values, errors_robustlogit_coffee - errors_robustlogit_coffee_ul, linestyle='dashed', color='r', label='MART Original')
+# plt.plot(x_values, errors_robustlogit_coffee_ul, linestyle='dotted', color='b', label='MART Unlearned')
 # Add labels and title
 plt.xlabel('Iterations')
-plt.ylabel('Errors')
+plt.ylabel('Errors(in %)')
 plt.title('Intel Image Dataset')
 # Add legend
 plt.legend()
