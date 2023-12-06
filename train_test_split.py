@@ -11,7 +11,7 @@ def delete_files_with_extension_recursive(folder_path, target_extension):
                 print(f"Deleted: {file_path}")
 
 # Specify the folder path
-folder_path = './data/dog-breeds/'
+folder_path = './weather/'
 
 # Specify the target extension to delete (in this case, "Zone.Identifier")
 target_extension = 'Zone.Identifier'
@@ -41,11 +41,11 @@ def train_test_split_per_class(class_folder, output_train_folder, output_test_fo
         shutil.copy(test_image, os.path.join(output_test_folder, class_name, os.path.basename(test_image)))
 
 # Specify the main dataset folder
-dataset_folder = './data/dog-breeds'
+dataset_folder = './weather'
 
 # Specify the output folders for the train and test sets
-output_train_folder = './data/dog-train'
-output_test_folder = './data/dog-test'
+output_train_folder = './train'
+output_test_folder = './test'
 
 # Create the output folders if they don't exist
 os.makedirs(output_train_folder, exist_ok=True)
