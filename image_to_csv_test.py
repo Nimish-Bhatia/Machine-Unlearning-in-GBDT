@@ -24,7 +24,7 @@ def load_images_from_folder(folder):
     return images, labels
 
 # Assuming you have a 'training' folder with subfolders for each class
-training_folder = './weather/train'
+training_folder = './flower_photos/train'
 images, lbls = load_images_from_folder(training_folder)
 
 # Feature extraction using PCA to limit the number of features
@@ -54,4 +54,4 @@ df['label'] = lbls  # Add labels column
 df = df[['label'] + columns]
 
 # Save DataFrame to CSV
-df.to_csv('./data/weather_images_80.test.csv', index=False)
+df.to_csv('./data/flower_photos_80.test.csv', index=False)
