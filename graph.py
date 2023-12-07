@@ -141,34 +141,49 @@ import matplotlib as mpl
 #     lines = file.readlines()
 # data = [re.split(r'\s+', line.strip()) for line in lines]
 # mart = pd.DataFrame(data)
-with open('intel_image.test.csv_robustlogit_J20_v0.1.testlog', 'r') as file:
-    lines = file.readlines()
-data = [re.split(r'\s+', line.strip()) for line in lines]
-robustlogit = pd.DataFrame(data)
-with open('intel_image.test.csv_robustlogit_J20_v0.1.unlearnlog', 'r') as file:
-    lines = file.readlines()
-data = [re.split(r'\s+', line.strip()) for line in lines]
-robustlogit_unlearn = pd.DataFrame(data)
-test_data = pd.read_csv('./data/intel_image.test.csv')
-# Errors for both method
 
-# errors_mart_coffee=mart[2].to_numpy().astype(int)
-errors_robustlogit_coffee=robustlogit[2].to_numpy().astype(int) / len(test_data.index) * 100
-errors_robustlogit_coffee_ul=robustlogit_unlearn[2].to_numpy().astype(int) / len(test_data.index) * 100
-x_values = np.arange(1, len(errors_robustlogit_coffee) + 1)
-# Plot the graph
-# plt.plot(x_values, errors_mart_coffee,  linestyle='-', color='b', label='MART')
-plt.plot(x_values, errors_robustlogit_coffee - errors_robustlogit_coffee_ul, linestyle='dashed', color='r', label='MART Original')
-# plt.plot(x_values, errors_robustlogit_coffee_ul, linestyle='dotted', color='b', label='MART Unlearned')
-# Add labels and title
+# Intel image dataset
+mismatch = 0
+with open('./logs/intel_image_80.test.csv_robustlogit_J20_v0.1.testlog', 'r') as file:
+    lines = file.readlines()
+data = [re.split(r'\s+', line.strip()) for line in lines]
+original_error = pd.DataFrame(data)
+with open('./logs/intel_image_80.test.csv_robustlogit_J20_v0.1.unlearnlog', 'r') as file:
+    lines = file.readlines()
+data = [re.split(r'\s+', line.strip()) for line in lines]
+unlearn_error = pd.DataFrame(data)
+test_data = pd.read_csv('./data/intel_image_80.test.csv')
+# print(len(test_data.index))
+
+# # Errors for both models
+errors_original = original_error[2].to_numpy().astype(int) / len(test_data.index) * 100
+errors_unlearn = unlearn_error[2].to_numpy().astype(int) / len(test_data.index) * 100
+x_values = np.arange(1, len(original_error) + 1)
+
+# Plot the graph for errors in both models
+plt.plot(x_values, errors_original,  linestyle='solid', color='r', label='Original Model')
+plt.plot(x_values, errors_unlearn, linestyle='solid', color='b', label='Unlearned Model')
 plt.xlabel('Iterations')
 plt.ylabel('Errors(in %)')
+# Add labels and title
 plt.title('Intel Image Dataset')
 # Add legend
 plt.legend()
 # Show the plot
-plt.savefig('graph_intelw.png') 
+plt.savefig('graph_intel.png') 
 plt.close()
+
+# # Plot the graph for difference
+# plt.plot(x_values, errors_robustlogit_coffee - errors_robustlogit_coffee_ul, linestyle='dashed', color='r', label='Difference between Original and Unlearned Model Prediction')
+# plt.xlabel('Iterations')
+# plt.ylabel('Prediction difference')
+# # Add labels and title
+# plt.title('Intel Image Dataset (Prediction differences for both models)')
+# # Add legend
+# plt.legend()
+# # Show the plot
+# plt.savefig('graph_intel_diff.png')
+# plt.close()
 
 
 
