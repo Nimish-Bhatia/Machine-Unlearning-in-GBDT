@@ -97,7 +97,7 @@ with open('./logs/intel_image_80.test.csv_robustlogit_J20_v0.1.testlog', 'r') as
     lines = file.readlines()
 data = [re.split(r'\s+', line.strip()) for line in lines]
 original_error = pd.DataFrame(data)
-with open('./logs/intel_image_80.test.csv_robustlogit_J20_v0.1.unlearnlog', 'r') as file:
+with open('./logs/vehicle_image_72.test.csv_robustlogit_J20_v0.1.unlearnlog', 'r') as file:
     lines = file.readlines()
 data = [re.split(r'\s+', line.strip()) for line in lines]
 unlearn_error = pd.DataFrame(data)
@@ -117,7 +117,7 @@ plt.title('Intel Dataset')
 # Add legend
 plt.legend()
 # Show the plot
-plt.savefig('graph_intel.png') 
+plt.savefig('graph_vehicle.png') 
 plt.close()
 
 # Vehicle dataset
