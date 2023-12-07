@@ -144,15 +144,15 @@ import matplotlib as mpl
 
 # Intel image dataset
 mismatch = 0
-with open('./logs/intel_image_80.test.csv_robustlogit_J20_v0.1.testlog', 'r') as file:
+with open('./logs/vehicle_image_72.test.csv_robustlogit_J20_v0.1.testlog', 'r') as file:
     lines = file.readlines()
 data = [re.split(r'\s+', line.strip()) for line in lines]
 original_error = pd.DataFrame(data)
-with open('./logs/intel_image_80.test.csv_robustlogit_J20_v0.1.unlearnlog', 'r') as file:
+with open('./logs/vehicle_image_72.test.csv_robustlogit_J20_v0.1.unlearnlog', 'r') as file:
     lines = file.readlines()
 data = [re.split(r'\s+', line.strip()) for line in lines]
 unlearn_error = pd.DataFrame(data)
-test_data = pd.read_csv('./data/intel_image_80.test.csv')
+test_data = pd.read_csv('./data/vehicle_image_72.test.csv')
 # print(len(test_data.index))
 
 # # Errors for both models
@@ -166,11 +166,11 @@ plt.plot(x_values, errors_unlearn, linestyle='solid', color='b', label='Unlearne
 plt.xlabel('Iterations')
 plt.ylabel('Errors(in %)')
 # Add labels and title
-plt.title('Intel Image Dataset')
+plt.title('Vehicle Image Dataset')
 # Add legend
 plt.legend()
 # Show the plot
-plt.savefig('graph_intel.png') 
+plt.savefig('graph_vehicle.png') 
 plt.close()
 
 # # Plot the graph for difference
