@@ -1,14 +1,14 @@
-# OnlineBoosting
+# Unlearning
 
 The implementation for paper [Machine Unlearning in Gradient Boosting Decision Trees](https://dl.acm.org/doi/10.1145/3580305.3599420) (Accepted on KDD 2023).
-OnlineBoosting support training, unlearning and tuning. This implementation base on the toolkit of [ABCBoost](https://github.com/pltrees/abcboost).
+Unlearning support training, unlearning and tuning. This implementation base on the toolkit of [ABCBoost](https://github.com/pltrees/abcboost).
 
 ## Quick Start
 ### Installation guide
 Run the following commands to build ABCBoost from source:
 ```
-git clone https://github.com/huawei-lin/OnlineBoosting.git
-cd OnlineBoosting
+git clone https://github.com/huawei-lin/Unlearning.git
+cd Unlearning
 mkdir build
 cd build
 cmake ..
@@ -46,6 +46,18 @@ Here we would like to evaluate these three models in `./data/optdigits.test.csv`
 ./abcboost_predict -data ./data/optdigits.test.csv -model optdigits.train.csv_robustlogit_J20_v0.1.model
 ./abcboost_predict -data ./data/optdigits.test.csv -model optdigits.train.csv_robustlogit_J20_v0.1_unlearn.model
 ```
+### Plots
+Here we have plotted the error v/s iterations plot for both the original as well as the unlearned model for all datasets:
+
+![alt text](https://github.com/Prateek692/Unlearning/blob/main/graph_coffee_bean.png?raw=true)
+
+![alt text](https://github.com/Prateek692/Unlearning/blob/main/graph_dog.png?raw=true)
+
+![alt text](https://github.com/Prateek692/Unlearning/blob/main/graph_flower.png?raw=true)
+
+![alt text](https://github.com/Prateek692/Unlearning/blob/main/graph_intel.png?raw=true)
+
+![alt text](https://github.com/Prateek692/Unlearning/blob/main/graph_vehicle.png?raw=true)
 
 ## More Configuration Options:
 #### Data related:
@@ -77,7 +89,7 @@ Here we would like to evaluate these three models in `./data/optdigits.test.csv`
 
 
 ## References
-If you found OnlineBoosting useful in your research or applications, please cite using the following article:
+
 ```
 @inproceedings{DBLP:conf/kdd/LinCL023,
   author       = {Huawei Lin and
@@ -105,4 +117,4 @@ If you found OnlineBoosting useful in your research or applications, please cite
 
 
 ## Copyright and License
-OnlineBoosting is provided under the Apache-2.0 license.
+Apache-2.0 license.
