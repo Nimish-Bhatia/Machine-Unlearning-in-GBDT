@@ -1,3 +1,6 @@
+# Problem Statement
+The problem at hand involves unlearning in multiclass image classification, specifically within datasets where each folder corresponds to a distinct class. The objective is to develop an unlearning methodology that allows the removal of specific classes from the model without necessitating a complete retraining of the entire dataset. This unlearning process should be tailored to multiclass scenarios, addressing challenges such as the removal of class-specific information, maintaining model performance on retained classes, and achieving adaptability to evolving dataset requirements. The goal is to design an efficient and effective unlearning framework that enhances the model's versatility and responsiveness in multiclass classification scenarios without the need for extensive retraining.
+
 # Unlearning
 
 The implementation for paper [Machine Unlearning in Gradient Boosting Decision Trees](https://dl.acm.org/doi/10.1145/3580305.3599420) (Accepted on KDD 2023).
